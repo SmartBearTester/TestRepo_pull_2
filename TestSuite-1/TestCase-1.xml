@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="f03c9f17-a1ed-4acf-a1a6-20b4d9ee990b" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="f03c9f17-a1ed-4acf-a1a6-20b4d9ee990bfileName">TestCase-1</con:setting>
+  </con:settings>
+  <con:testStep type="restrequest" name="REST Request" id="c653a1d8-eb16-41d7-96c7-82b247e331fd">
+    <con:settings/>
+    <con:config service="http://localhost:8080" resourcePath="/test" methodName="Test" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Request" id="8b106603-bd98-46a3-9ec3-b47ae97e86bb" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="my-header" value="Header value" xmlns="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:endpoint>http://localhost:8080</con:endpoint>
+        <con:request>{"body" : "Body value"}</con:request>
+        <con:assertion type="Valid HTTP Status Codes" id="da91ac35-cddc-4ea1-aea7-9efcd88d1a92" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Response SLA Assertion" id="5c8fcd02-95a0-4766-b8bb-a29bb04f1e80" name="Response SLA">
+          <con:configuration>
+            <SLA>200</SLA>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="param" value="Param value"/>
+        </con:parameters>
+        <con:parameterOrder>
+          <con:entry>param</con:entry>
+        </con:parameterOrder>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>
