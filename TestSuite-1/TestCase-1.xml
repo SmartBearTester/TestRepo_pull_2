@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:testCase id="f03c9f17-a1ed-4acf-a1a6-20b4d9ee990b" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:description>Test Case Description remote</con:description>
   <con:settings>
     <con:setting id="f03c9f17-a1ed-4acf-a1a6-20b4d9ee990bfileName">TestCase-1</con:setting>
   </con:settings>
@@ -8,19 +9,19 @@
     <con:config service="http://localhost:8080" resourcePath="/test" methodName="Test" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <con:restRequest name="REST Request" id="8b106603-bd98-46a3-9ec3-b47ae97e86bb" mediaType="application/json" postQueryString="false">
         <con:settings>
-          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="my-header" value="Header value" xmlns="http://eviware.com/soapui/config"/></con:setting>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="my-header" value="Header remote value" xmlns="http://eviware.com/soapui/config"/></con:setting>
         </con:settings>
-        <con:endpoint>http://localhost:8080</con:endpoint>
-        <con:request>{"body" : "Body value"}</con:request>
+        <con:endpoint>http://remote:8080</con:endpoint>
+        <con:request>{"body" : "Body remote value"}</con:request>
         <con:assertion type="Valid HTTP Status Codes" id="da91ac35-cddc-4ea1-aea7-9efcd88d1a92" name="Valid HTTP Status Codes">
           <con:settings/>
           <con:configuration>
-            <codes>200</codes>
+            <codes>200, 404</codes>
           </con:configuration>
         </con:assertion>
         <con:assertion type="Response SLA Assertion" id="5c8fcd02-95a0-4766-b8bb-a29bb04f1e80" name="Response SLA">
           <con:configuration>
-            <SLA>200</SLA>
+            <SLA>666</SLA>
           </con:configuration>
         </con:assertion>
         <con:credentials>
@@ -29,7 +30,7 @@
         </con:credentials>
         <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
         <con:parameters>
-          <con:entry key="param" value="Param value"/>
+          <con:entry key="param" value="Param remote value"/>
         </con:parameters>
         <con:parameterOrder>
           <con:entry>param</con:entry>
@@ -37,6 +38,9 @@
       </con:restRequest>
     </con:config>
   </con:testStep>
+  <con:setupScript>log.info("setup script remote" )</con:setupScript>
+  <con:tearDownScript>log.info("teardown script remote" )</con:tearDownScript>
   <con:properties/>
+  <con:reportScript>log.info("report script remote" )</con:reportScript>
   <con:reportParameters/>
 </con:testCase>
